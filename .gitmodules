@@ -1,0 +1,3 @@
+[submodule "src/Dump/Http"]
+	path = src/Dump/Http
+	url = https://github.com/dump-components/php-http
