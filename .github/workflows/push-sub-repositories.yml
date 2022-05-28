@@ -21,7 +21,4 @@ jobs:
         source_file: 'src/Dump/Http' # Folder to copy
         destination_repo: 'dump-components/php-http' # Target repo
         destination_folder: '/' # Folder where to copy it
-        user_email: 'dom.makowski@gmail.com'
-        user_name: 'DominiqueMakowski'
-        commit_message: "AUTO: Copying posts from Dom's to REBEL's website"
         git_server: 'github.com'
