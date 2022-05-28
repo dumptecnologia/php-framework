@@ -1,6 +1,9 @@
-name: Push sub repositories
+on:
+  push:
+     branches:
+       - master
 
-on: push
+name: ⏫ Copy content to REBEL
 
 jobs:
   copy-file:
@@ -9,8 +12,16 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Push to another repo
+    # Copy the 'post' folder
+    - name: Push posts
+      uses: dmnemec/copy_file_to_another_repo_action@main
       env:
-        PHP_FRAMEWORK: ${{ secrets.PHP_FRAMEWORK }} 
-      run: |
-        git subtree push --prefix src/Dump/Http https://user:$PHP_FRAMEWORK@github.com/dump-components/php-http main
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        source_file: 'src/Dump/Http' # Folder to copy
+        destination_repo: 'dump-components/php-http.github.io' # Target repo
+        destination_folder: '/' # Folder where to copy it
+        user_email: 'dom.makowski@gmail.com'
+        user_name: 'DominiqueMakowski'
+        commit_message: "AUTO: Copying posts from Dom's to REBEL's website"
+        git_server: 'github.com'
