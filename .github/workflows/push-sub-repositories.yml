@@ -11,6 +11,6 @@ jobs:
 
     - name: Push to another repo
       env:
-        API_TOKEN_GITHUB: ${{ secrets.PHP_FRAMEWORK }} 
+        PHP_FRAMEWORK: ${{ secrets.PHP_FRAMEWORK }} 
       run: |
         git subtree push --prefix src/Dump/Http https://user:$PHP_FRAMEWORK@github.com/dump-components/php-http main
