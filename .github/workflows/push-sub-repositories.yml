@@ -16,7 +16,7 @@ jobs:
     - name: Push posts
       uses: dmnemec/copy_file_to_another_repo_action@main
       env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        API_TOKEN_GITHUB: ${{ secrets.PHP_FRAMEWORK }}
       with:
         source_file: 'src/Dump/Http' # Folder to copy
         destination_repo: 'dump-components/php-http.github.io' # Target repo
