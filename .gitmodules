@@ -1,8 +1,0 @@
-[submodule "src/Dump/Http"]
-	path = src/Dump/Http
-	url = git@github.com:dump-components/php-http.git
-	branch = main
-[submodule "src/Dump/Patterns"]
-	path = src/Dump/Patterns
-	url = git@github.com:dump-components/php-patterns.git
-	branch = main
