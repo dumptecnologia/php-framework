@@ -13,4 +13,4 @@ jobs:
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }} 
       run: |
-        git status && ls -lsa
+        git subtree push --prefix src/Dump/Http git@github.com:dump-components/php-http.git main 
