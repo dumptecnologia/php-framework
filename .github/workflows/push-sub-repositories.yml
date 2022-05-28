@@ -19,7 +19,7 @@ jobs:
         API_TOKEN_GITHUB: ${{ secrets.PHP_FRAMEWORK }}
       with:
         source_file: 'src/Dump/Http' # Folder to copy
-        destination_repo: 'dump-components/php-http.github.io' # Target repo
+        destination_repo: 'dump-components/php-http' # Target repo
         destination_folder: '/' # Folder where to copy it
         user_email: 'dom.makowski@gmail.com'
         user_name: 'DominiqueMakowski'
