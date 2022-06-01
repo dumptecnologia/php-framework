@@ -1,0 +1,42 @@
+{
+  "name": "dump/framework",
+  "description": "The Dump PHP Framework.",
+  "keywords": [
+    "framework"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/dumptecnologia/php-framework",
+  "authors": [
+    {
+      "name": "Douglas Medeiros",
+      "email": "eu@dougllasmedeiros.dev"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "ext-mbstring": "*",
+    "symfony/var-dumper": "^6.0"
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^1.4.7",
+    "phpunit/phpunit": "^9.5.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "Dump\\": "src/Dump/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Dump\\Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "composer/package-versions-deprecated": true
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
