@@ -1,0 +1,32 @@
+name: push-sub-repositories
+
+on: [ push ]
+
+jobs:
+  update-php-http:
+    name: dump-components/php-http
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: nxtlvlsoftware/git-subtree-action@1.1
+        with:
+          repo: 'dump-components/php-http'
+          path: 'src/Dump/Http'
+          deploy_key: '${{ secrets.PHP_HTTP }}'
+          force: true
+
+  update-php-patterns:
+    name: dump-components/php-patterns
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: nxtlvlsoftware/git-subtree-action@1.1
+        with:
+          repo: 'dump-components/php-patterns'
+          path: 'src/Dump/Patterns'
+          deploy_key: '${{ secrets.PHP_PATTERNS }}'
+          force: true
