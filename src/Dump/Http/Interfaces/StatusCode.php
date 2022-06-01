@@ -2,7 +2,7 @@
 
 namespace Dump\Http\Interfaces;
 
-interface StatusCodeInterface
+interface StatusCode
 {
 	/**
 	 * provide http status message

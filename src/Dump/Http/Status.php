@@ -2,9 +2,9 @@
 
 namespace Dump\Http;
 
-use Dump\Http\Interfaces\StatusCodeInterface;
+use Dump\Http\Interfaces\StatusCode;
 
-enum Status: int implements StatusCodeInterface
+enum Status: int implements StatusCode
 {
 	
 	// [Informational 1xx]
