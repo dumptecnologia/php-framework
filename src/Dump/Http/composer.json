@@ -1,6 +1,6 @@
 {
   "name": "dump/http",
-  "description": "The Dump Framework Http package.",
+  "description": "The Dump Framework Http package",
   "license": "MIT",
   "homepage": "https://github.com/dumptecnologia/php-framework",
   "authors": [
