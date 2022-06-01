@@ -17,6 +17,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: log
+        run: echo "validate ${{ matrix.package }} package"
+
       - name: Validate dependencies
         uses: php-actions/composer@master
         with:
