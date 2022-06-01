@@ -11,8 +11,8 @@ jobs:
         package:
           # list your packages here
           - './'
-          - './Dump/Http'
-          - './Dump/Patterns'
+          - './src/Dump/Http'
+          - './src/Dump/Patterns'
 
     steps:
       - uses: actions/checkout@v2
