@@ -1,26 +1,32 @@
 {
-  "name": "dump/http",
-  "description": "The Dump Framework Http package.",
-  "license": "MIT",
-  "homepage": "https://github.com/dumptecnologia/php-framework",
-  "authors": [
-    {
-      "name": "Douglas Medeiros",
-      "email": "eu@dougllasmedeiros.dev"
-    }
-  ],
-  "require": {
-    "php": "^8.1",
-    "ext-mbstring": "*"
-  },
-  "autoload": {
-    "psr-4": {
-      "Dump\\Http\\": ""
-    }
-  },
-  "config": {
-    "sort-packages": true
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
+    "name": "dump/http",
+    "description": "The Dump Framework Http package.",
+    "license": "MIT",
+    "homepage": "https://github.com/dumptecnologia/php-framework",
+    "keywords": [
+        "PHP",
+        "Enum",
+        "HTTP response status codes",
+        "HTTP request methods"
+    ],
+    "authors": [
+        {
+            "name": "Douglas Medeiros",
+            "email": "eu@dougllasmedeiros.dev"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "ext-mbstring": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dump\\Http\\": ""
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

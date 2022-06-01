@@ -4,15 +4,19 @@ namespace Dump\Http;
 
 use Dump\Http\Interfaces\StatusCode;
 
+/**
+ * PHP HTTP response status codes Enum
+ * @ref https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+ */
 enum Status: int implements StatusCode
 {
-	
+
 	// [Informational 1xx]
 	case CONTINUE = 100;
 	case SWITCHING_PROTOCOLS = 101;
 	case PROCESSING = 102;                         // WebDAV; RFC 2518
 	case EARLY_HINTS = 103;                        // RFC 8297
-	
+
 	// [Successful 2xx]
 	case OK = 200;
 	case CREATED = 201;
@@ -24,7 +28,7 @@ enum Status: int implements StatusCode
 	case MULTI_STATUS = 207;                       // WebDAV; RFC 4918
 	case ALREADY_REPORTED = 208;                   // WebDAV; RFC 5842
 	case IM_USED = 226;                            // RFC 3229
-	
+
 	// [Redirection 3xx]
 	case MULTIPLE_CHOICES = 300;
 	case MOVED_PERMANENTLY = 301;
@@ -35,7 +39,7 @@ enum Status: int implements StatusCode
 	case SWITCH_PROXY = 306;                       // unused
 	case TEMPORARY_REDIRECT = 307;                 // since HTTP/1.1
 	case PERMANENT_REDIRECT = 308;                 // RFC 7538
-	
+
 	// [Client Error 4xx]
 	case BAD_REQUEST = 400;
 	case UNAUTHORIZED = 401;
@@ -67,7 +71,7 @@ enum Status: int implements StatusCode
 	case TOO_MANY_REQUESTS = 429;                  // RFC 6585
 	case HEADER_FIELDS_LARGE = 431;                // RFC 6585
 	case UNAVAILABLE_FOR_LEGAL_REASONS = 451;      // RFC 7725
-	
+
 	// [Server Error 5xx]
 	case INTERNAL_SERVER_ERROR = 500;
 	case NOT_IMPLEMENTED = 501;
@@ -80,8 +84,8 @@ enum Status: int implements StatusCode
 	case LOOP_DETECTED = 508;                      // WebDAV; RFC 5842
 	case NOT_EXTENDED = 510;                       // RFC 2774
 	case NETWORK_AUTHENTICATION_REQUIRED = 511;    // RFC 6585
-	
-	
+
+
 	public function message(): string
 	{
 		return match ($this) {
@@ -151,27 +155,27 @@ enum Status: int implements StatusCode
 			self::NETWORK_AUTHENTICATION_REQUIRED => 'Network Authentication Required'
 		};
 	}
-	
+
 	public function fullMessage(): string
 	{
 		return sprintf('%d %s', $this->code(), $this->message());
 	}
-	
+
 	public function code(): int
 	{
 		return $this->value;
 	}
-	
+
 	public static function getMessage(int $code): string
 	{
 		return self::from($code)->message();
 	}
-	
+
 	public static function getFullMessage(int $code): string
 	{
 		return self::from($code)->fullMessage();
 	}
-	
+
 	public static function getCode(int $code): int
 	{
 		return self::from($code)->code();
