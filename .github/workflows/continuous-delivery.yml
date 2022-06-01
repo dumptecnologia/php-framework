@@ -1,8 +1,12 @@
-name: push-sub-repositories
+name: continuous delivery
 
 on: [ push ]
 
 jobs:
+
+
+  # php-http
+  ####################
   update-php-http:
     name: dump-components/php-http
     runs-on: ubuntu-latest
@@ -10,6 +14,13 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
+      - name: Validate dependencies
+        uses: php-actions/composer@master
+        with:
+          command: validate
+          working_dir: 'src/Dump/Http'
+
       - uses: nxtlvlsoftware/git-subtree-action@1.1
         with:
           repo: 'dump-components/php-http'
@@ -17,6 +28,8 @@ jobs:
           deploy_key: '${{ secrets.PHP_HTTP }}'
           force: true
 
+  # php-patterns
+  ####################
   update-php-patterns:
     name: dump-components/php-patterns
     runs-on: ubuntu-latest
@@ -24,6 +37,13 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
+      - name: Validate dependencies
+        uses: php-actions/composer@master
+        with:
+          command: validate
+          working_dir: 'src/Dump/Patterns'
+
       - uses: nxtlvlsoftware/git-subtree-action@1.1
         with:
           repo: 'dump-components/php-patterns'
