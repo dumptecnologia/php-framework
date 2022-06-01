@@ -1,0 +1,24 @@
+name: Validate Composer
+
+on: [ push ]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        package:
+          # list your packages here
+          - './'
+          - './Dump/Http'
+          - './Dump/Patterns'
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Validate dependencies
+        uses: php-actions/composer@master
+        with:
+          command: validate
+          working_dir: '${{ matrix.package }}'
