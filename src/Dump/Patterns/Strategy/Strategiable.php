@@ -8,7 +8,6 @@ use Dump\Patterns\Strategy\Interfaces\StrategyType;
 
 /**
  * @property ?Strategy $strategy = null
- * @implements \Dump\Patterns\Strategy\Interfaces\Strategiable
  */
 trait Strategiable
 {

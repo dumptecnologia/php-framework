@@ -2,18 +2,16 @@
 
 namespace Dump\Patterns\Strategy\Interfaces;
 
-
-abstract class Strategiable
+/**
+ * @property ?Strategy $strategy = null
+ */
+interface Strategiable
 {
+    public function setStrategy(StrategyType $type): self;
 
-    protected ?Strategy $strategy = null;
-
-
-    abstract public function setStrategy(StrategyType $type): self;
-
-    abstract public function getStrategy(): ?StrategyType;
+    public function getStrategy(): ?StrategyType;
 
     /** @return array<int, Strategy> */
-    abstract public function strategies(): array;
+    public function strategies(): array;
 
 }
