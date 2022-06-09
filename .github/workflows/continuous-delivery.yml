@@ -50,3 +50,26 @@ jobs:
           path: 'src/Dump/Patterns'
           deploy_key: '${{ secrets.PHP_PATTERNS }}'
           force: true
+
+  # php-patterns
+  ####################
+  update-php-regex:
+    name: dump-components/php-regex
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Validate dependencies
+        uses: php-actions/composer@master
+        with:
+          command: validate
+          working_dir: 'src/Dump/Regex'
+
+      - uses: nxtlvlsoftware/git-subtree-action@1.1
+        with:
+          repo: 'dump-components/php-regex'
+          path: 'src/Dump/Regex'
+          deploy_key: '${{ secrets.PHP_REGEX }}'
+          force: true
