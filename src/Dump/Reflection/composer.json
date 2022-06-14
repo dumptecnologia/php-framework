@@ -1,6 +1,6 @@
 {
-  "name": "dump/patterns",
-  "description": "The Dump Framework Patterns package.",
+  "name": "dump/reflection",
+  "description": "The Dump Framework Reflection package.",
   "license": "MIT",
   "homepage": "https://github.com/dumptecnologia/php-framework",
   "authors": [
@@ -11,12 +11,11 @@
   ],
   "require": {
     "php": "^8.1",
-    "ext-mbstring": "*",
-    "dump/reflection": "*"
+    "ext-mbstring": "*"
   },
   "autoload": {
     "psr-4": {
-      "Dump\\Patterns\\": ""
+      "Dump\\Reflection\\": ""
     }
   },
   "config": {

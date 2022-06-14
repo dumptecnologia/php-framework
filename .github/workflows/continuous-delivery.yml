@@ -73,3 +73,26 @@ jobs:
           path: 'src/Dump/Regex'
           deploy_key: '${{ secrets.PHP_REGEX }}'
           force: true
+
+  # php-reflection
+  ####################
+  update-php-reflection:
+    name: dump-components/php-reflection
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Validate dependencies
+        uses: php-actions/composer@master
+        with:
+          command: validate
+          working_dir: 'src/Dump/Reflection'
+
+      - uses: nxtlvlsoftware/git-subtree-action@1.1
+        with:
+          repo: 'dump-components/php-reflection'
+          path: 'src/Dump/Regex'
+          deploy_key: '${{ secrets.PHP_REFLECTION }}'
+          force: true
