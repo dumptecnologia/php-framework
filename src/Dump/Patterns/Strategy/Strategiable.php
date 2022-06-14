@@ -36,15 +36,12 @@ trait Strategiable
     /** @return array<int, Strategy> */
     public function strategies(): array
     {
-        if ($this->strategy) {
-            return $this->strategy->type()->all();
+        if (Reflection::dontInstanceOf($this->strategies, StrategyType::class)) {
+            throw new \Exception('strategies need have instance of \Dump\Patterns\Strategy\Interfaces\StrategyType');
         }
 
-        if (Reflection::instanceOf($this->strategies, TaskType::class)) {
-            return $this->strategies::getAll();
-        }
+        return $this->strategies::getAll();
 
-        throw new \Exception('strategies not found in atribute $strategy and $strategies');
     }
 
 

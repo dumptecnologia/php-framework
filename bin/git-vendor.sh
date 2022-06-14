@@ -6,7 +6,7 @@ cd $APP_PATH/../
 
 git init
 
-git remote  add origin git@github.com:dumptecnologia/php-framework.git
+git remote add origin git@github.com:dumptecnologia/php-framework.git
 
 git fetch
 
