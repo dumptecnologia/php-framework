@@ -8,6 +8,7 @@ use Dump\Patterns\Strategy\Interfaces\StrategyType;
 
 /**
  * @property ?Strategy $strategy = null
+ * @property ?StrategyType $strategies = null // namespace StrategyType::class
  */
 trait Strategiable
 {
@@ -33,7 +34,15 @@ trait Strategiable
     /** @return array<int, Strategy> */
     public function strategies(): array
     {
-        return empty($this->strategy) ? [] : $this->strategy->type()->all();
+        if ($this->strategy) {
+            return $this->strategy->type()->all();
+        }
+
+        if ($this->strategies && method_exists($this->strategies, 'all')) {
+            return $this->strategies->all();
+        }
+
+        throw new \Exception('strategies not found in atribute $strategy and $strategies');
     }
 
 
