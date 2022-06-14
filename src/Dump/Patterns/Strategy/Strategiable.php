@@ -3,8 +3,10 @@
 namespace Dump\Patterns\Strategy;
 
 
+use App\Interfaces\Task\TaskType;
 use Dump\Patterns\Strategy\Interfaces\Strategy;
 use Dump\Patterns\Strategy\Interfaces\StrategyType;
+use Dump\Reflection\Reflection;
 
 /**
  * @property ?Strategy $strategy = null
@@ -38,8 +40,8 @@ trait Strategiable
             return $this->strategy->type()->all();
         }
 
-        if ($this->strategies && method_exists($this->strategies, 'all')) {
-            return $this->strategies->all();
+        if (Reflection::instanceOf($this->strategies, TaskType::class)) {
+            return $this->strategies::getAll();
         }
 
         throw new \Exception('strategies not found in atribute $strategy and $strategies');
