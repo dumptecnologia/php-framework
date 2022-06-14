@@ -11,3 +11,14 @@ if (!function_exists('class_method_exists')) {
         return Reflection::classMethodExist($class, $method);
     }
 }
+
+
+if (!function_exists('instance_of')) {
+    /**
+     * Checks if the class or enum instance of
+     */
+    function instance_of(string $class, string $interface): bool
+    {
+        return Reflection::instanceOf($class, $interface);
+    }
+}
