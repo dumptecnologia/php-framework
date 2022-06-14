@@ -18,7 +18,7 @@
             "Dump\\Reflection\\": ""
         },
         "files": [
-            "global_functions.php"
+            "functions.php"
         ]
     },
     "config": {
