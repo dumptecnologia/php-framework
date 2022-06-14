@@ -23,4 +23,20 @@ class Reflection
 
         return class_exists($class) && method_exists($class, $method);
     }
+
+    /**
+     * rewrite the default method to include the enum type
+     *
+     * @param string $class
+     * @param string $interface
+     * @return bool
+     */
+    public static function instanceOf(string $class, string $interface): bool
+    {
+        if (enum_exists($class)) {
+            return $class::cases()[0] instanceof $interface;
+        }
+
+        return $class instanceof $interface;
+    }
 }
