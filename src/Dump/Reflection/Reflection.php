@@ -25,18 +25,28 @@ class Reflection
     }
 
     /**
-     * rewrite the default method to include the enum type
+     * Checks if the class or enum instance of
      *
-     * @param string $class
+     * @param string|object $class
      * @param string $interface
      * @return bool
      */
-    public static function instanceOf(string $class, string $interface): bool
+    public static function instanceOf(string|object $class, string $interface): bool
     {
         if (enum_exists($class)) {
             return $class::cases()[0] instanceof $interface;
         }
 
         return $class instanceof $interface;
+    }
+
+
+    /**
+     * Checks if the class or enum don't instance of
+     * @see instanceOf
+     */
+    public static function dontInstanceOf(string|object $class, string $interface): bool
+    {
+        return !static::instanceOf($class, $interface);
     }
 }

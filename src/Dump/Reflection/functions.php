@@ -17,8 +17,20 @@ if (!function_exists('instance_of')) {
     /**
      * Checks if the class or enum instance of
      */
-    function instance_of(string $class, string $interface): bool
+    function instance_of(string|object $class, string $interface): bool
     {
         return Reflection::instanceOf($class, $interface);
+    }
+}
+
+
+if (!function_exists('dont_instance_of')) {
+    /**
+     * Checks if the class or enum don't instance of
+     * @see instance_of
+     */
+    function dont_instance_of(string|object $class, string $interface): bool
+    {
+        return Reflection::dontInstanceOf($class, $interface);
     }
 }

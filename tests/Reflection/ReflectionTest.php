@@ -37,6 +37,16 @@ class ReflectionTest extends TestCase
         $this->assertTrue(Reflection::instanceOf(TestEnum::class, TestInterface::class));
     }
 
+
+    public function test_dont_instance_of()
+    {
+        $this->assertTrue(Reflection::dontInstanceOf(TestEnum::class, TestUnusedInterface::class));
+    }
+
+}
+
+interface TestUnusedInterface
+{
 }
 
 interface TestInterface
