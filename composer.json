@@ -20,7 +20,8 @@
         "dump/http": "self.version",
         "dump/patterns": "self.version",
         "dump/regex": "self.version",
-        "dump/reflection": "self.version"
+        "dump/reflection": "self.version",
+        "dump/filedir": "self.version"
     },
     "require-dev": {
         "phpstan/phpstan": "^1.4.7",

@@ -96,3 +96,27 @@ jobs:
           path: 'src/Dump/Reflection'
           deploy_key: '${{ secrets.PHP_REFLECTION }}'
           force: true
+
+
+  # php-filedir
+  ####################
+  update-php-filedir:
+    name: dump-components/php-filedir
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Validate dependencies
+        uses: php-actions/composer@master
+        with:
+          command: validate
+          working_dir: 'src/Dump/Filedir'
+
+      - uses: nxtlvlsoftware/git-subtree-action@1.1
+        with:
+          repo: 'dump-components/php-filedir'
+          path: 'src/Dump/Filedir'
+          deploy_key: '${{ secrets.PHP_FILEDIR }}'
+          force: true
