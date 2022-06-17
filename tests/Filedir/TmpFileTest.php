@@ -21,14 +21,17 @@ class TmpFileTest extends TestCase
     {
         $tmpFile = new TmpFile();
 
-        $this->assertEquals('/tmp/', substr($tmpFile->path, 0, 5));
+        $this->assertEquals(
+            sys_get_temp_dir() . DIRECTORY_SEPARATOR,
+            str_replace(basename($tmpFile->path), '', $tmpFile->path)
+        );
     }
 
     public function test_can_delete_tmp_file()
     {
         $tmpFile = new TmpFile();
 
-        $tmpFile->remove();
+        $tmpFile->delete();
 
         $this->assertFileDoesNotExist($tmpFile->path);
     }
