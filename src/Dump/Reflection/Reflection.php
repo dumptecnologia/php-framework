@@ -33,7 +33,7 @@ class Reflection
 	 */
 	public static function instanceOf(mixed $class, string $interface): bool
 	{
-		if (enum_exists($class)) {
+		if (enum_exists((string)$class)) {
 			return $class::cases()[0] instanceof $interface;
 		}
 		
