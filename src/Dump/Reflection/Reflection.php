@@ -55,7 +55,7 @@ class Reflection
 	 * @param mixed $class
 	 * @return bool
 	 */
-	private static function enumExists(mixed $class): bool
+	public static function enumExists(mixed $class): bool
 	{
 		return is_string($class) && enum_exists($class);
 	}
