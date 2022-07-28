@@ -17,7 +17,7 @@ class Reflection
 	 */
 	public static function classMethodExist(string $class, string $method): bool
 	{
-		if (enum_exists($class)) {
+		if (self::enumExists($class)) {
 			return class_exists($class) && method_exists($class::cases()[0], $method);
 		}
 		
@@ -33,7 +33,7 @@ class Reflection
 	 */
 	public static function instanceOf(mixed $class, string $interface): bool
 	{
-		if (enum_exists((string)$class)) {
+		if (self::enumExists($class)) {
 			return $class::cases()[0] instanceof $interface;
 		}
 		
@@ -48,5 +48,15 @@ class Reflection
 	public static function dontInstanceOf(mixed $class, string $interface): bool
 	{
 		return !static::instanceOf($class, $interface);
+	}
+	
+	/**
+	 * Checks if the enum has been defined
+	 * @param mixed $class
+	 * @return bool
+	 */
+	private static function enumExists(mixed $class): bool
+	{
+		return is_string($class) && enum_exists($class);
 	}
 }
