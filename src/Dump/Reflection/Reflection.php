@@ -57,6 +57,6 @@ class Reflection
 	 */
 	public static function enumExists(mixed $class): bool
 	{
-		return is_string($class) && enum_exists($class);
+		return is_string($class) && enum_exists($class) || $class instanceof \BackedEnum;
 	}
 }
