@@ -34,3 +34,14 @@ if (!function_exists('dont_instance_of')) {
 		return Reflection::dontInstanceOf($class, $interface);
 	}
 }
+
+
+if (!function_exists('getVal')) {
+	/**
+	 * Get a primitive type of parameter
+	 */
+	function getVal(mixed $class): mixed
+	{
+		return Reflection::getVal($class);
+	}
+}

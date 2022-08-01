@@ -59,4 +59,27 @@ class Reflection
 	{
 		return is_string($class) && enum_exists($class) || $class instanceof \BackedEnum;
 	}
+	
+	
+	/**
+	 * Get a primitive type of parameter
+	 * @param mixed $class
+	 * @return bool
+	 */
+	public static function getVal(mixed $class): mixed
+	{
+		if (is_string($class)) {
+			return $class;
+		}
+		
+		if (Reflection::enumExists($class)) {
+			return $class->value;
+		}
+		
+		if (is_object($class)) {
+			return (string)$class;
+		}
+		
+		return $class;
+	}
 }
