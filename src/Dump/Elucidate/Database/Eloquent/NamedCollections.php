@@ -1,6 +1,6 @@
 <?php
 
-namespace Dump\Elucidate\Database\Eloquent\Collection;
+namespace Dump\Elucidate\Database\Eloquent;
 
 /**
  * Implements in model support a custom relationship collection in Laravel Framework;
