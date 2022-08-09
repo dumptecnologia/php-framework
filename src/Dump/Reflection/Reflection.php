@@ -7,7 +7,6 @@ namespace Dump\Reflection;
  */
 class Reflection
 {
-	
 	/**
 	 * rewrite the default method to include the enum type
 	 *
@@ -81,5 +80,31 @@ class Reflection
 		}
 		
 		return $class;
+	}
+	
+	
+	/**
+	 * Results array of items from any.
+	 *
+	 * @param mixed $items
+	 * @return array
+	 */
+	public static function getArrayable(mixed $items): array
+	{
+		if (is_array($items)) {
+			return $items;
+		} elseif ($items instanceof \JsonSerializable) {
+			return (array)$items->jsonSerialize();
+		} elseif ($items instanceof \Traversable) {
+			return iterator_to_array($items);
+		} elseif ($items instanceof \UnitEnum) {
+			return [$items];
+		} elseif (self::classMethodExist($items, 'toArray')) {
+			return $items->toArray();
+		} elseif (self::classMethodExist($items, 'toJson')) {
+			return json_decode($items->toJson(), true);
+		}
+		
+		return (array)$items;
 	}
 }

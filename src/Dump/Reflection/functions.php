@@ -45,3 +45,14 @@ if (!function_exists('getVal')) {
 		return Reflection::getVal($class);
 	}
 }
+
+
+if (!function_exists('getArrayable')) {
+	/**
+	 * Results array of items from any.
+	 */
+	function getArrayable(mixed $items): array
+	{
+		return Reflection::getArrayable($items);
+	}
+}
