@@ -39,7 +39,6 @@ class Reflection
 		return $class instanceof $interface;
 	}
 	
-	
 	/**
 	 * Checks if the class or enum don't instance of
 	 * @see instanceOf
@@ -58,7 +57,6 @@ class Reflection
 	{
 		return is_string($class) && enum_exists($class) || $class instanceof \BackedEnum;
 	}
-	
 	
 	/**
 	 * Get a primitive type of parameter
@@ -81,7 +79,6 @@ class Reflection
 		
 		return $class;
 	}
-	
 	
 	/**
 	 * Results array of items from any.
