@@ -19,10 +19,10 @@ class Reflection
 		if (self::enumExists($class)) {
 			return class_exists($class) && method_exists($class::cases()[0], $method);
 		}
-		
+
 		return class_exists($class) && method_exists($class, $method);
 	}
-	
+
 	/**
 	 * Checks if the class or enum instance of
 	 *
@@ -35,10 +35,10 @@ class Reflection
 		if (self::enumExists($class)) {
 			return $class::cases()[0] instanceof $interface;
 		}
-		
+
 		return $class instanceof $interface;
 	}
-	
+
 	/**
 	 * Checks if the class or enum don't instance of
 	 * @see instanceOf
@@ -47,7 +47,7 @@ class Reflection
 	{
 		return !static::instanceOf($class, $interface);
 	}
-	
+
 	/**
 	 * Checks if the enum has been defined
 	 * @param mixed $class
@@ -57,7 +57,7 @@ class Reflection
 	{
 		return is_string($class) && enum_exists($class) || $class instanceof \BackedEnum;
 	}
-	
+
 	/**
 	 * Get a primitive type of parameter
 	 * @param mixed $class
@@ -68,18 +68,18 @@ class Reflection
 		if (is_string($class)) {
 			return $class;
 		}
-		
+
 		if (Reflection::enumExists($class)) {
 			return $class->value;
 		}
-		
+
 		if (is_object($class)) {
 			return (string)$class;
 		}
-		
+
 		return $class;
 	}
-	
+
 	/**
 	 * Results array of items from any.
 	 *
@@ -101,7 +101,7 @@ class Reflection
 		} elseif (self::classMethodExist($items, 'toJson')) {
 			return json_decode($items->toJson(), true);
 		}
-		
+
 		return (array)$items;
 	}
 }

@@ -15,7 +15,8 @@
     "require": {
         "php": "^8.1",
         "ext-mbstring": "*",
-        "psr/log": ">=3"
+        "psr/log": ">=3",
+        "lstrojny/functional-php": "^1.17"
     },
     "replace": {
         "dump/http": "self.version",
@@ -33,13 +34,18 @@
             "Dump\\": "src/Dump/"
         },
         "files": [
-            "src/Dump/Reflection/functions.php"
+            "src/Dump/autoload.php"
         ]
     },
     "autoload-dev": {
         "psr-4": {
             "Dump\\Tests\\": "tests/"
         }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Dump\\ComposerScripts::postAutoloadDump"
+        ]
     },
     "config": {
         "sort-packages": true,

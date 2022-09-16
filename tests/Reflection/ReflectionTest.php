@@ -9,7 +9,7 @@ class ReflectionTest extends TestCase
 {
     public function test_class_method_exists()
     {
-        $this->assertTrue(Reflection::classMethodExist(TestClass::class, 'testMethod'));
+        $this->assertTrue(class_method_exists(TestClass::class, 'testMethod'));
     }
 
     public function test_enum_class_method_exists()
@@ -29,7 +29,7 @@ class ReflectionTest extends TestCase
 
     public function test_class_instance_of()
     {
-        $this->assertTrue(Reflection::instanceOf(TestClass::class, TestInterface::class));
+        $this->assertTrue(Reflection::instanceOf(new TestClass(), TestInterface::class));
     }
 
     public function test_enum_instance_of()
@@ -40,7 +40,7 @@ class ReflectionTest extends TestCase
 
     public function test_dont_instance_of()
     {
-        $this->assertTrue(Reflection::dontInstanceOf(TestEnum::class, TestUnusedInterface::class));
+        $this->assertTrue(Reflection::dontInstanceOf(new TestClass(), TestUnusedInterface::class));
     }
 
 }
