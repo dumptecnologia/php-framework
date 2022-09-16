@@ -34,18 +34,13 @@
             "Dump\\": "src/Dump/"
         },
         "files": [
-            "src/Dump/autoload.php"
+            "src/Dump/Reflection/functions.php"
         ]
     },
     "autoload-dev": {
         "psr-4": {
             "Dump\\Tests\\": "tests/"
         }
-    },
-    "scripts": {
-        "post-autoload-dump": [
-            "Dump\\ComposerScripts::postAutoloadDump"
-        ]
     },
     "config": {
         "sort-packages": true,
