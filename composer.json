@@ -34,7 +34,9 @@
             "Dump\\": "src/Dump/"
         },
         "files": [
-            "src/Dump/Funcional/functions.php",
+            "src/Dump/Funcional/collection.php",
+            "src/Dump/Funcional/string.php",
+            "src/Dump/Funcional/callback.php",
             "src/Dump/Reflection/functions.php"
         ]
     },

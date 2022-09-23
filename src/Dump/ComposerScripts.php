@@ -11,7 +11,10 @@ class ComposerScripts
     private static $autoload = __DIR__ . '/autoload.php';
 
     private static $files = [
-        'Reflection/functions.php'
+        'Reflection/functions.php',
+        'Funcional/callback.php',
+        'Funcional/collection.php',
+        'Funcional/string.php',
     ];
 
     public static function postAutoloadDump(Event $event): void
