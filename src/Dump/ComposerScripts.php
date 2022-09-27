@@ -36,9 +36,9 @@ class ComposerScripts
     {
         file_put_contents(
             self::$autoload,
-            "<?php " .
+            "<?php \n" .
             implode(" ", array_map(static function ($file) {
-                    return 'include_once("' . self::$root . '/' . $file . '");';
+                    return PHP_EOL . 'include_once("' . self::$root . '/' . $file . '");';
                 }, self::$files)
             ));
     }
