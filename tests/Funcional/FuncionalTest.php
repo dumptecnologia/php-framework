@@ -34,7 +34,7 @@ class FuncionalTest extends TestCase
 		$this->assertIsArray($throwArray);
 		$this->assertArrayHasKey('message', $throwArray);
 		$this->assertArrayHasKey('stacktrace', $throwArray);
-		$this->assertCount(11, $throwArray['stacktrace']);
+		$this->assertIsArray($throwArray['stacktrace']);
 	}
 
 	public function test_throw_to_string()
