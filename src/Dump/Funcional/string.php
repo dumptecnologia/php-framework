@@ -10,3 +10,13 @@ if (!function_exists('concat')) {
         return \Functional\concat(... $strings);
     }
 }
+
+if (!function_exists('random_hex')) {
+	/**
+	 * Generate a rand string hexadecimal
+	 */
+	function random_hex(int $length): string
+	{
+		return str_pad(bin2hex(random_bytes($length)), $length);
+	}
+}
