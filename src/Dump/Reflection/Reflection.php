@@ -74,7 +74,7 @@ class Reflection
 		}
 
 		if (is_object($class)) {
-			return (string)$class;
+			return (string) $class;
 		}
 
 		return $class;
@@ -91,7 +91,7 @@ class Reflection
 		if (is_array($items)) {
 			return $items;
 		} elseif ($items instanceof \JsonSerializable) {
-			return (array)$items->jsonSerialize();
+			return (array) $items->jsonSerialize();
 		} elseif ($items instanceof \Traversable) {
 			return iterator_to_array($items);
 		} elseif ($items instanceof \UnitEnum) {
@@ -100,8 +100,10 @@ class Reflection
 			return $items->toArray();
 		} elseif (self::classMethodExist($items, 'toJson')) {
 			return json_decode($items->toJson(), true);
+		} elseif (is_json($items)) {
+			return json_decode($items, true);
 		}
 
-		return (array)$items;
+		return (array) $items;
 	}
 }

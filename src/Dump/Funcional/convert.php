@@ -6,7 +6,47 @@ if (!function_exists('to_bool')) {
 	 */
 	function to_bool(mixed $value): bool
 	{
-		return filter_var($value, FILTER_VALIDATE_BOOLEAN);
+		return filter_var($value, FILTER_VALIDATE_BOOLEAN) ?: _throw_value_error('bool');
+	}
+}
+
+if (!function_exists('to_int')) {
+	/**
+	 * Convert value to int
+	 */
+	function to_int(mixed $value): int
+	{
+		return filter_var($value, FILTER_VALIDATE_INT) ?: _throw_value_error('int');
+	}
+}
+
+if (!function_exists('to_str')) {
+	/**
+	 * Convert value to str
+	 */
+	function to_str(mixed $value): string
+	{
+		return sprintf("%s", filter_var($value) ?: _throw_value_error('string'));
+	}
+}
+
+if (!function_exists('to_flt')) {
+	/**
+	 * Convert value to float
+	 */
+	function to_flt(mixed $value): float
+	{
+		return filter_var($value, FILTER_VALIDATE_FLOAT) ?: _throw_value_error('float');
+	}
+}
+
+if (!function_exists('to_arr')) {
+	/**
+	 * Convert value to array
+	 */
+	function to_arr(mixed $value): array
+	{
+		return getArrayable($value);
 	}
 }
 
@@ -71,5 +111,12 @@ if (!function_exists('throw_to_string')) {
 			$exception->getMessage(),
 			implode("\n", throw_to_array($exception)['stacktrace'])
 		);
+	}
+}
+
+if (!function_exists('_throw_value_error')) {
+	function _throw_value_error(string $type)
+	{
+		return throw new ValueError(sprintf('the value cannot be converted to %s', $type));
 	}
 }
