@@ -6,7 +6,7 @@ if (!function_exists('to_bool')) {
 	 */
 	function to_bool(mixed $value): bool
 	{
-		return filter_var($value, FILTER_VALIDATE_BOOLEAN) ?: _throw_value_error('bool');
+		return filter_var($value, FILTER_VALIDATE_BOOLEAN);
 	}
 }
 
