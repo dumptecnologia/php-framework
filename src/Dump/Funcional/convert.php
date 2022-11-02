@@ -16,7 +16,7 @@ if (!function_exists('to_int')) {
 	 */
 	function to_int(mixed $value): int
 	{
-		return intval($value, FILTER_VALIDATE_INT);
+		return intval($value);
 	}
 }
 
