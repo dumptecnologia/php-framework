@@ -16,7 +16,7 @@ if (!function_exists('to_int')) {
 	 */
 	function to_int(mixed $value): int
 	{
-		return filter_var($value, FILTER_VALIDATE_INT) ?: _throw_value_error('int');
+		return intval($value, FILTER_VALIDATE_INT);
 	}
 }
 
@@ -36,7 +36,7 @@ if (!function_exists('to_flt')) {
 	 */
 	function to_flt(mixed $value): float
 	{
-		return filter_var($value, FILTER_VALIDATE_FLOAT) ?: _throw_value_error('float');
+		return floatval($value);
 	}
 }
 
