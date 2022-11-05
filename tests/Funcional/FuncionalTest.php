@@ -33,8 +33,8 @@ class FuncionalTest extends TestCase
 
 		$this->assertIsArray($throwArray);
 		$this->assertArrayHasKey('message', $throwArray);
-		$this->assertArrayHasKey('stacktrace', $throwArray);
-		$this->assertIsArray($throwArray['stacktrace']);
+		$this->assertArrayHasKey('trace', $throwArray);
+		$this->assertIsArray($throwArray['trace']);
 	}
 
 	public function test_throw_to_string()
@@ -44,6 +44,6 @@ class FuncionalTest extends TestCase
 
 		$this->assertIsString($throwString);
 		$this->assertStringContainsString("message: error test_throw_to_string", $throwString);
-		$this->assertStringContainsString("[stacktrace]", $throwString);
+		$this->assertStringContainsString("[trace]", $throwString);
 	}
 }

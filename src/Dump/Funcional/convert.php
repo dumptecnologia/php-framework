@@ -56,7 +56,8 @@ if (!function_exists('throw_to_array')) {
 	 */
 	function throw_to_array(Throwable $exception): array
 	{
-		$rtn = "";
+
+		$rtn = [];
 		$count = 0;
 		foreach ($exception->getTrace() as $frame) {
 			$args = '';
@@ -81,22 +82,26 @@ if (!function_exists('throw_to_array')) {
 				}
 				$args = implode(', ', $args);
 			}
-			$rtn .= sprintf(
-				"#%s %s(%s): %s%s%s(%s)\n",
-				$count,
+
+            $rtn[$count] = sprintf(
+				"%s(%s): %s%s%s(%s)%s",
 				$frame['file'] ?? '',
 				$frame['line'] ?? '',
 				$frame['class'] ?? '',
 				$frame['type'] ?? '', // "->" or "::"
 				$frame['function'],
-				$args
+				$args,
+                $count === 0 ? ":{$exception->getLine()}" : '',
 			);
+
 			$count++;
 		}
 
+        array_filter($rtn);
+
 		return [
 			'message' => $exception->getMessage(),
-			'stacktrace' => explode("\n", $rtn),
+			'trace' => $rtn,
 		];
 	}
 }
@@ -107,9 +112,9 @@ if (!function_exists('throw_to_string')) {
 	 */
 	function throw_to_string(Throwable $exception): string
 	{
-		return sprintf("message: %s\n[stacktrace]\n%s",
+		return sprintf("message: %s\n[trace]\n%s",
 			$exception->getMessage(),
-			implode("\n", throw_to_array($exception)['stacktrace'])
+			implode("\n", throw_to_array($exception)['trace'])
 		);
 	}
 }
