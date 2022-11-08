@@ -85,6 +85,17 @@ if (!function_exists('first_index_of')) {
     }
 }
 
+if (!function_exists('flatten')) {
+    /**
+     * Takes a nested combination of collections and returns their contents as a single, flat array.
+	 * Does not preserve indexes.
+     */
+    function flatten(array|\Traversable $collection): array
+    {
+        return \Functional\flatten($collection);
+    }
+}
+
 if (!function_exists('invoke')) {
     /**
      * Calls the method named by $methodName on each value in the collection. Any extra arguments passed to invoke will be
