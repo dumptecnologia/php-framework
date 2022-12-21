@@ -39,6 +39,7 @@
             "src/Dump/Funcional/callback.php",
             "src/Dump/Funcional/comparation.php",
             "src/Dump/Funcional/convert.php",
+            "src/Dump/Funcional/condition.php",
             "src/Dump/Reflection/functions.php"
         ]
     },

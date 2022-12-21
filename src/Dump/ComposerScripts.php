@@ -17,6 +17,7 @@ class ComposerScripts
         'Funcional/string.php',
         'Funcional/convert.php',
         'Funcional/comparation.php',
+        'Funcional/condition.php',
     ];
 
     public static function postAutoloadDump(Event $event): void
