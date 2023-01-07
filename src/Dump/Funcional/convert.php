@@ -26,7 +26,7 @@ if (!function_exists('to_str')) {
 	 */
 	function to_str(mixed $value): string
 	{
-		return sprintf("%s", filter_var($value) ?: _throw_value_error('string'));
+		return sprintf("%s", $value === false ? 0 : $value);
 	}
 }
 

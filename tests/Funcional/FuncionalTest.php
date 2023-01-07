@@ -26,6 +26,18 @@ class FuncionalTest extends TestCase
 		$this->assertFalse(to_bool('false'));
 	}
 
+	public function test_to_str()
+	{
+		$this->assertEquals('1', to_str(1));
+		$this->assertEquals('0', to_str(0));
+        $this->assertEquals('1', to_str(true));
+		$this->assertEquals('0', to_str(false));
+		$this->assertEquals('1.23', to_str(1.23));
+		$this->assertEquals('-1', to_str(-1));
+		$this->assertEquals('-1.23', to_str(-1.23));
+		$this->assertEquals('abc', to_str('abc'));
+	}
+
 	public function test_throw_to_array()
 	{
 		$exception = new \Exception('error test_throw_to_array');
