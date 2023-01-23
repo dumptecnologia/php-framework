@@ -88,7 +88,7 @@ if (!function_exists('first_index_of')) {
 if (!function_exists('flatten')) {
     /**
      * Takes a nested combination of collections and returns their contents as a single, flat array.
-	 * Does not preserve indexes.
+     * Does not preserve indexes.
      */
     function flatten(array|\Traversable $collection): array
     {
@@ -188,5 +188,21 @@ if (!function_exists('truthy')) {
     function truthy(array|\Traversable $collection): bool
     {
         return \Functional\truthy($collection);
+    }
+}
+
+if (!function_exists('array_value_recursive')) {
+    /**
+     * Retrieves values from a multidimensional array, either by key or all values.
+     */
+    function array_value_recursive(array $arr, ?string $key = null): array
+    {
+        $val = [];
+
+        array_walk_recursive($arr, function ($v, $k) use ($key, &$val) {
+            $key && $k != $key ?: $val[] = $v;
+        }) ?: throw new Exception('array_value_recursive returns false.');
+
+        return $val;
     }
 }
