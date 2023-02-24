@@ -206,3 +206,77 @@ if (!function_exists('array_value_recursive')) {
         return $val;
     }
 }
+
+if (!function_exists('array_dot')) {
+    /**
+     * Flatten a multi-dimensional associative array with dots.
+     * @ref https://laravel.com/docs/10.x/helpers#method-array-dot
+     */
+    function array_dot(iterable $arr, $prepend = ''): array
+    {
+        $results = [];
+
+        foreach ($arr as $key => $value) {
+            if (is_array($value) && ! empty($value)) {
+                $results = array_merge($results, array_dot($value, $prepend.$key.'.'));
+            } else {
+                $results[$prepend.$key] = $value;
+            }
+        }
+
+        return $results;
+    }
+}
+
+if (!function_exists('array_undot')) {
+    /**
+     * Convert a flatten "dot" notation array into an expanded array.
+     * @ref https://laravel.com/docs/10.x/helpers#method-array-undot
+     */
+    function array_undot(iterable $arr): array
+    {
+        /**
+         * Set an array item to a given value using "dot" notation.
+         * If no key is given to the method, the entire array will be replaced.
+         *
+         * @ref https://laravel.com/docs/10.x/helpers#method-array-set
+         */
+        function set(array &$array, int|string|null $key, mixed $value): array
+        {
+            if (is_null($key)) {
+                return $array = $value;
+            }
+
+            $keys = explode('.', $key);
+
+            foreach ($keys as $i => $key) {
+                if (count($keys) === 1) {
+                    break;
+                }
+
+                unset($keys[$i]);
+
+                // If the key doesn't exist at this depth, we will just create an empty array
+                // to hold the next value, allowing us to create the arrays to hold final
+                // values at the correct depth. Then we'll keep digging into the array.
+                if (! isset($array[$key]) || ! is_array($array[$key])) {
+                    $array[$key] = [];
+                }
+
+                $array = &$array[$key];
+            }
+
+            $array[array_shift($keys)] = $value;
+
+            return $array;
+        }
+
+        $results = [];
+
+        foreach ($arr as $key => $value) {
+            set($results, $key, $value);
+        }
+
+        return $results;
+    }
+}
